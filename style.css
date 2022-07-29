@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.Body{
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto','sans-seriff';
+
+}
+
+.grids{
+    display: grid;
+    height: 400px;
+    width: 400px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.lines{
+    height: 132px;
+    width: 132px;
+    border: 2px;
+   
+}
+
+.XYaxis{
+    display:flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+body{
+    background-image: url("background.jpg");
+}
+
+.lines:nth-child(1){
+    border-style: hidden solid solid hidden;
+}
+
+.lines:nth-child(2){
+    border-style: hidden solid solid solid;
+}
+
+.lines:nth-child(3){
+    border-style: hidden hidden solid solid;
+}
+
+.lines:nth-child(4){
+    border-style: solid solid solid hidden;
+}
+
+.lines:nth-child(5){
+    border-style: solid;
+}
+
+.lines:nth-child(6){
+    border-style: solid hidden solid solid;
+}
+
+.lines:nth-child(7){
+    border-style: solid solid hidden hidden;
+}
+
+.lines:nth-child(8){
+    border-style: solid solid hidden solid;
+}
+
+.lines:nth-child(9){
+    border-style: solid hidden hidden solid;
+}
