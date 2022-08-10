@@ -2,6 +2,27 @@ let grids = document.querySelector(".grids");                           //calls 
 let child = grids.childNodes;                                           // a node list of children is assigned to child
 let lines = document.querySelectorAll(".lines");                        //calls the array of lines div 
 let XYaxis = document.querySelector(".XYaxis");
+let Submitbutton = document.querySelector(".Submit");
+let Form = document.getElementById("form");
+XYaxis.style.display="none";                                   //sets the display to invisible so that it doesnt come up when the page pop ups
+let button = document.querySelector(".button")                 // called the button class that represents Restart button
+button.style.display="none";                                   //sets the button display to invisible
+let Player1= document.getElementById("Player1");
+let Player2= document.getElementById("Player2");
+Submitbutton.addEventListener("click", function () { 
+    if (Player1.value !== "") {
+        game.player1.name = Player1.value;
+      }
+      if (Player2.value !== "") {
+        game.player2.name = Player2.value;
+      }
+    if((Player1.value)&&(Player2.value))
+    {
+    Form.style.display="none";
+    XYaxis.style.display="flex";
+    button.style.display="inline-block";
+    }
+})
 let playerPerson = function (name,symbol) {                             // factory function of playerperson to define each player
     return{
         name,
@@ -39,10 +60,11 @@ let gameBoard = (function () {
         setCell,
     };
 })();
-
 let game = (()=>{
     let player1 = playerPerson("Player1","X");                               
     let player2 = playerPerson("Player2","O");
+    console.log(Player1.value);
+    
     let currentplayer = player1;
     let switchPlayer = function()                                   // to switch players 
     {   
@@ -54,10 +76,12 @@ let game = (()=>{
         {
             currentplayer= player1;
         }
-    }
-    let button = document.querySelector(".button")                 // called the button class that represents Restart button
+    }   
     button.addEventListener("click",function (e) {
-       for(let i=0;i<gameBoard.board.length;i++)                   // calls a for loop to iterate the board array to set the elements to empty to replicate the restart effect
+        XYaxis.style.display="none";
+        button.style.display="none";
+        Form.style.display="flex";
+        for(let i=0;i<gameBoard.board.length;i++)                   // calls a for loop to iterate the board array to set the elements to empty to replicate the restart effect
        {
         gameBoard.board[i].innerHTML="";
         currentplayer=player1;
@@ -114,10 +138,10 @@ let game = (()=>{
         div.addEventListener("click", function () {             // adds a event listner "click" on div
             if(gameBoard.setCell(index,currentplayer.symbol))   // calls function setCell() to check whether the given array is empty and proceeds further if its true 
             {
-                console.log("1");
-                div.textContent=currentplayer.symbol;           // update the respective div with the currentplayer symbol
+                div.textContent=currentplayer.symbol;           // update the respective div with the currentplayer symbol                   
                 if(win(currentplayer.symbol))                   // checks for win 
-                {                    
+                {       
+                    console.log(Player1.value);                 
                     let newDiv = document.createElement("div");
                     newDiv.classList.add("newDiv");
                     XYaxis.appendChild(newDiv);
